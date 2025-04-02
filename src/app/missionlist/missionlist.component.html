@@ -1,1 +1,6 @@
-<p>missionlist works!</p>
+<h2>Mission List</h2>
+<ul>
+  <li *ngFor="let mission of missions" (click)="viewDetails(mission.id)">
+    {{ mission.name }}
+  </li>
+</ul>

@@ -1,11 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MissionService } from '../services/mission.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-missionlist',
-  imports: [],
   templateUrl: './missionlist.component.html',
-  styleUrl: './missionlist.component.css'
+  styleUrls: ['./missionlist.component.css']
 })
-export class MissionlistComponent {
+export class MissionListComponent implements OnInit {
+  missions: any[] = [];
 
+  constructor(private missionService: MissionService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.missionService.getMissions().subscribe((data: any[]) => {
+      this.missions = data;
+    });
+  }
+
+  viewDetails(id: number): void {
+    this.router.navigate(['/mission', id]);
+  }
 }

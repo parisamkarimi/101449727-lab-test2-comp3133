@@ -1,1 +1,5 @@
-<p>missiondetails works!</p>
+<h2>Mission Details</h2>
+<div *ngIf="mission">
+  <p><strong>Name:</strong> {{ mission.name }}</p>
+  <p><strong>Description:</strong> {{ mission.description }}</p>
+</div>
